@@ -26,5 +26,4 @@ const ContainerLogo = styled.div`
         color: #FFFFFF;
         margin-left: 20px;
     }
-
 `
