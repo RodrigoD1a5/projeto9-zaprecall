@@ -94,7 +94,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
 }
 
 .pergunta-fechada > p {
@@ -104,6 +103,10 @@
   font-size: 16px;
   line-height: 19px;
   color: #333333;
+}
+
+.pergunta-fechada > img{
+  cursor: pointer;
 }
 
 .pergunta-aberta {

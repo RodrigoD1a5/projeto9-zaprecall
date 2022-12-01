@@ -1,16 +1,11 @@
 import Pergunta from "./Pergunta";
 
-export default function Perguntas() {
+export default function Perguntas(props) {
+    const {cards}=props
+    console.log(cards)
     return (
         <>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
-            <Pergunta/>
+            {cards.map((card , index )=> <Pergunta key={index} card={card} numeroDaPergunta={index+1} />)}
         </>
     )
 }
