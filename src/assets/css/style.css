@@ -94,6 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .pergunta-fechada > p {
@@ -129,4 +130,5 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
+  cursor: pointer;
 }
