@@ -1,7 +1,7 @@
-import { useState } from "react";
 import Logo from "./componentes/Logo";
 import Perguntas from "./componentes/Perguntas";
 import Rodape from "./componentes/Rodape";
+import styled from "styled-components";
 
 
 export default function App() {
@@ -17,10 +17,23 @@ export default function App() {
   ]
 
   return (
-    <div className="screen-container">
-      <Logo/>
-      <Perguntas cards={cards}/>
-      <Rodape/>
-    </div>
+    <ContainerTela>
+      <Logo />
+      <Perguntas cards={cards} />
+      <Rodape />
+    </ContainerTela>
   );
 }
+
+
+const ContainerTela = styled.div`
+  background-color: #FB6B6B;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 200px;
+`

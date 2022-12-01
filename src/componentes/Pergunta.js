@@ -15,7 +15,7 @@ export default function Pergunta(props) {
         setImagem(seta_virar)
         setPergunta("pergunta-aberta")
     }
-
+    
     return (
         <div className={pergunta}>
             <p>{texto}</p>
