@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
-export default function Rodape() {
+export default function Rodape(props) {
+    const{cardsFechados}= props
     return (
-        <div className="footer-concluidos">
-            0/8 CONCLUÍDOS
-        </div>
+        <RodapeConcluidos>
+            <p>{cardsFechados}/8 CONCLUÍDOS </p>
+        </RodapeConcluidos>
     )
 }
 

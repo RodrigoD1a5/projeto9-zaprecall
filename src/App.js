@@ -2,6 +2,7 @@ import Logo from "./componentes/Logo";
 import Perguntas from "./componentes/Perguntas";
 import Rodape from "./componentes/Rodape";
 import styled from "styled-components";
+import { useState } from "react";
 
 
 export default function App() {
@@ -16,11 +17,25 @@ export default function App() {
     { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
   ]
 
+  const [cardsFechados ,setCardsFechados] = useState(0)
+  console.log(cardsFechados)
+  function fecharCard(){
+    const numeroCardsFechados = cardsFechados+1
+    setCardsFechados(numeroCardsFechados)
+  }
+
   return (
     <ContainerTela>
       <Logo />
-      <Perguntas cards={cards} />
-      <Rodape />
+      <Perguntas 
+      cards={cards} 
+      fecharCard={fecharCard}
+      />
+
+      <Rodape 
+      cardsFechados={cardsFechados}
+      />
+
     </ContainerTela>
   );
 }
