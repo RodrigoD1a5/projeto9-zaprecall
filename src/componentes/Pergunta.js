@@ -22,12 +22,15 @@ export default function Pergunta(props) {
     const [cor ,setCor]=useState("")
     const [perguntaFinalizada, setPerguntaFinalizada] = useState(false)
 
+    const [dataTestimg , setDataTestimg] = useState("play-btn")
+
     function mostrarPergunta() {
         if(perguntaFinalizada){
             return
         }
         setTexto(card.question)
         setImagem(seta_virar)
+        setDataTestimg("turn-btn")
         setPergunta("pergunta-aberta")
     }
     function mostrarResposta()  {
@@ -39,15 +42,15 @@ export default function Pergunta(props) {
         setImagem("")
     }
 
-    function responder(VERMELHO, erro){
+    function responder(cor, icon){
         if(perguntaFinalizada){
             return
         }
         setResposta("resposta-fechada")
         setPergunta("pergunta-fechada")
         setTexto(`Pergunta${numeroDaPergunta}`)
-        setImagem(erro)
-        setCor(VERMELHO)
+        setImagem(icon)
+        setCor(cor)
         setPerguntaFinalizada(true)
         fecharCard()
     }
@@ -58,17 +61,17 @@ export default function Pergunta(props) {
         cor={cor}
         perguntaFinalizada={perguntaFinalizada}
         >
-            <p>{texto}</p>
-            <img src={imagem} onClick={pergunta === "pergunta-fechada"? mostrarPergunta : mostrarResposta}/>
+            <p data-test="flashcard-text">{texto}</p>
+            <img data-test={dataTestimg} src={imagem} onClick={pergunta === "pergunta-fechada"? mostrarPergunta : mostrarResposta}/>
             {(resposta === "resposta-aberta")  && 
             <ContainerBotoes>
-                <StyleButton cor={VERMELHO} onClick = {() => responder(VERMELHO , erro)}>
+                <StyleButton data-test="no-btn" cor={VERMELHO} onClick = {() => responder(VERMELHO , erro)}>
                 Não Lembrei
                 </StyleButton>
-                <StyleButton cor={AMARELO} onClick = {() => responder(AMARELO , quase)}>
+                <StyleButton data-test="partial-btn" cor={AMARELO} onClick = {() => responder(AMARELO , quase)}>
                 Quase não lembrei
                 </StyleButton>
-                <StyleButton cor={VERDE} onClick = {() => responder(VERDE , certo)}>
+                <StyleButton data-test="zap-btn" cor={VERDE} onClick = {() => responder(VERDE , certo)}>
                 Zap!
                 </StyleButton>
             </ContainerBotoes>}

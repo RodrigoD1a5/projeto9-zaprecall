@@ -16,14 +16,16 @@ export default function App() {
     { question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
     { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
   ]
+  const totalCards= cards.length 
 
   const [cardsFechados ,setCardsFechados] = useState(0)
-  console.log(cardsFechados)
+  
+
   function fecharCard(){
     const numeroCardsFechados = cardsFechados+1
     setCardsFechados(numeroCardsFechados)
   }
-
+  
   return (
     <ContainerTela>
       <Logo />
@@ -34,6 +36,7 @@ export default function App() {
 
       <Rodape 
       cardsFechados={cardsFechados}
+      totalCards={totalCards}
       />
 
     </ContainerTela>
