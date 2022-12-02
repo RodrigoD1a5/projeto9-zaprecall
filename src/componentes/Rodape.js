@@ -6,7 +6,6 @@ import sad from "../assets/img/sad.png"
 const parabens = "Parabéns!"
 export default function Rodape(props) {
     const { cardsFechados, totalCards, filaRespostaIcon } = props
-    console.log(filaRespostaIcon.map(((i) => i.dataTest)).includes("no-icon"))
     return (
         <RodapeConcluidos data-test="footer">
             <div>
