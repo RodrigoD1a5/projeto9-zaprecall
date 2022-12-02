@@ -3,8 +3,10 @@ import styled from "styled-components"
 export default function Rodape(props) {
     const{cardsFechados, totalCards}= props
     return (
-        <RodapeConcluidos>
-            <div data-test="footer">{cardsFechados}/{totalCards} CONCLUÍDOS </div>
+        <RodapeConcluidos data-test="footer">
+            <div>
+                {cardsFechados}/{totalCards} CONCLUÍDOS 
+            </div>
         </RodapeConcluidos>
     )
 }

@@ -3,6 +3,7 @@ import Perguntas from "./componentes/Perguntas";
 import Rodape from "./componentes/Rodape";
 import styled from "styled-components";
 import { useState } from "react";
+import TelaInicial from "./componentes/TelaInicial";
 
 
 export default function App() {
@@ -16,18 +17,30 @@ export default function App() {
     { question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
     { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
   ]
-  const totalCards= cards.length 
 
+  const totalCards= cards.length 
   const [cardsFechados ,setCardsFechados] = useState(0)
-  
+  const [iniciar, setIniciar]=useState(false)
+  console.log(iniciar)
+
 
   function fecharCard(){
     const numeroCardsFechados = cardsFechados+1
     setCardsFechados(numeroCardsFechados)
   }
-  
+  function iniciarRecall(){
+    setIniciar(true)
+  }
+
+
   return (
     <ContainerTela>
+      {!iniciar ? 
+      <TelaInicial
+      iniciarRecall={iniciarRecall}
+      /> 
+      :
+      <>
       <Logo />
       <Perguntas 
       cards={cards} 
@@ -38,7 +51,8 @@ export default function App() {
       cardsFechados={cardsFechados}
       totalCards={totalCards}
       />
-
+      </>
+      }
     </ContainerTela>
   );
 }
@@ -51,6 +65,7 @@ const ContainerTela = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 0px;
   padding: 0px;
   padding-bottom: 200px;
