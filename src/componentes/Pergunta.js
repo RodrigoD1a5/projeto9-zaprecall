@@ -63,7 +63,7 @@ export default function Pergunta(props) {
         setCor(cor)
         setPerguntaFinalizada(true)
         setDataTestImg(dataTest)
-        fecharCard()
+        fecharCard({icon , dataTest})
     }
 
     return (
@@ -125,6 +125,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 img {
+    cursor:pointer;
     position: absolute;
     bottom: 10px;
     right: 10px;

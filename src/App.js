@@ -4,6 +4,7 @@ import Rodape from "./componentes/Rodape";
 import styled from "styled-components";
 import { useState } from "react";
 import TelaInicial from "./componentes/TelaInicial";
+import { GlobalStyle } from "./assets/css/GlobalStyle";
 
 
 export default function App() {
@@ -17,43 +18,51 @@ export default function App() {
     { question: "Usamos props para __", answer: "Passar diferentes informações para componentes" },
     { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
   ]
+  const totalCards = cards.length
 
-  const totalCards= cards.length 
-  const [cardsFechados ,setCardsFechados] = useState(0)
-  const [iniciar, setIniciar]=useState(false)
+  const [cardsFechados, setCardsFechados] = useState(0)
+  const [iniciar, setIniciar] = useState(false)
+  const [filaRespostaIcon, setFilaRespostaIcon]= useState([])
+
   console.log(iniciar)
 
 
-  function fecharCard(){
-    const numeroCardsFechados = cardsFechados+1
+  function fecharCard(filaResposta) {
+    const numeroCardsFechados = cardsFechados + 1
     setCardsFechados(numeroCardsFechados)
+    setFilaRespostaIcon([...filaRespostaIcon, filaResposta])
+    
   }
-  function iniciarRecall(){
+  function iniciarRecall() {
     setIniciar(true)
   }
 
 
   return (
-    <ContainerTela>
-      {!iniciar ? 
-      <TelaInicial
-      iniciarRecall={iniciarRecall}
-      /> 
-      :
-      <>
-      <Logo />
-      <Perguntas 
-      cards={cards} 
-      fecharCard={fecharCard}
-      />
+    <>
+      <GlobalStyle />
+      <ContainerTela>
+        {!iniciar ?
+          <TelaInicial
+            iniciarRecall={iniciarRecall}
+          />
+          :
+          <>
+            <Logo />
+            <Perguntas
+              cards={cards}
+              fecharCard={fecharCard}
+            />
 
-      <Rodape 
-      cardsFechados={cardsFechados}
-      totalCards={totalCards}
-      />
-      </>
-      }
-    </ContainerTela>
+            <Rodape
+              cardsFechados={cardsFechados}
+              totalCards={totalCards}
+              filaRespostaIcon={filaRespostaIcon}
+            />
+          </>
+        }
+      </ContainerTela>
+    </>
   );
 }
 

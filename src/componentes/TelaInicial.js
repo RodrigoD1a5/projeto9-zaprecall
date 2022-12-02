@@ -47,3 +47,9 @@ const Inicio =styled.div`
         border-radius: 5px;
     }
 `
+const RodapeBotoesConcluidos = styled.div`
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: 20px;
+`

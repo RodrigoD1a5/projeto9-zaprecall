@@ -1,13 +1,17 @@
 import styled from "styled-components"
 
 export default function Rodape(props) {
-    const{cardsFechados, totalCards}= props
+    const { cardsFechados, totalCards, filaRespostaIcon } = props
     return (
-        <RodapeConcluidos data-test="footer">
-            <div>
-                {cardsFechados}/{totalCards} CONCLUÍDOS 
+        <RodapeConcluidos>
+            <div data-test="footer">
+                {cardsFechados}/{totalCards} CONCLUÍDOS
             </div>
+            <RodapeBotoesConcluidos>
+                {filaRespostaIcon.map((i, index) => <img src={i.icon} data-test={i.dataTest} key={index} />)}
+            </RodapeBotoesConcluidos>
         </RodapeConcluidos>
+
     )
 }
 
@@ -26,4 +30,13 @@ const RodapeConcluidos = styled.div`
     font-size: 18px;
     color: #333333;
     padding: 10px;
+
+`
+
+const RodapeBotoesConcluidos = styled.div`
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin: 20px;
+
 `
