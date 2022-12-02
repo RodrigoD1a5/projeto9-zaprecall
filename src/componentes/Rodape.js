@@ -1,12 +1,29 @@
 import styled from "styled-components"
+import party from "../assets/img/party.png"
+import sad from "../assets/img/sad.png"
 
+
+const parabens = "Parabéns!"
 export default function Rodape(props) {
     const { cardsFechados, totalCards, filaRespostaIcon } = props
+    console.log(filaRespostaIcon.map(((i) => i.dataTest)).includes("no-icon"))
     return (
-        <RodapeConcluidos>
-            <div data-test="footer">
+        <RodapeConcluidos data-test="footer">
+            <div>
                 {cardsFechados}/{totalCards} CONCLUÍDOS
             </div>
+            {cardsFechados === totalCards &&
+                <Mensagem data-test='finish-text'>
+                    <div>
+                        <img src={!filaRespostaIcon.map(((i) => i.dataTest)).includes("no-icon") ? party : sad} /><span>
+                            {!filaRespostaIcon.map(((i) => i.dataTest)).includes("no-icon") ? "Parabéns!" : "Putz..."}
+                        </span>
+                    </div>
+                    <p>
+                        {!filaRespostaIcon.map(((i) => i.dataTest)).includes("no-icon") ? "Você não esqueceu de nenhum flashcard!" : "Ainda faltam alguns...Mas não desanime!"}
+                    </p>
+                </Mensagem>
+            }
             <RodapeBotoesConcluidos>
                 {filaRespostaIcon.map((i, index) => <img src={i.icon} data-test={i.dataTest} key={index} />)}
             </RodapeBotoesConcluidos>
@@ -33,10 +50,22 @@ const RodapeConcluidos = styled.div`
 
 `
 
+const Mensagem = styled.div`
+    margin: 10px 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    span{
+        font-weight: 700;
+        margin-left: 5px;
+    }
+`
+
 const RodapeBotoesConcluidos = styled.div`
     display: flex;
-    width: 50%;
-    justify-content: space-between;
-    margin: 20px;
-
+    align-items: center;
+    img{
+        margin-right:7px;
+    }
 `

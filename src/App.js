@@ -24,7 +24,6 @@ export default function App() {
   const [iniciar, setIniciar] = useState(false)
   const [filaRespostaIcon, setFilaRespostaIcon]= useState([])
 
-  console.log(iniciar)
 
 
   function fecharCard(filaResposta) {
